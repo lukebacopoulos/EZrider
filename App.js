@@ -4,10 +4,16 @@ import { Accelerometer } from 'expo-sensors';
 import React, { useState, useEffect } from 'react';
 
 export default function App() {
+  let xarray = []
+  let yarray = []
+  let zarray = []
   const [data, setData] = useState({
     x: 0,
     y: 0,
     z: 0,
+    xarray: xarray.push(x),
+    yarray: yarray.push(y),
+    zarray: zarray.push(z),
   });
   const [subscription, setSubscription] = useState(null);
 
@@ -42,12 +48,9 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.text}>Accelerometer: (in Gs where 1 G = 9.81 m s^-2)</Text>
       <Text style={styles.text}>
-          x: { Math.round(x) } y: { Math.round(y) } z: { Math.round(z) }
+          x: { x } y: { y } z: { z } 
       </Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={subscription ? _unsubscribe : _subscribe} style={styles.button}>
-          <Text>{subscription ? 'On' : 'Off'}</Text>
-        </TouchableOpacity>
         <TouchableOpacity onPress={_slow} style={[styles.button, styles.middleButton]}>
           <Text>Slow</Text>
         </TouchableOpacity>
